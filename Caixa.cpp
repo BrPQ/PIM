@@ -187,7 +187,8 @@ int main()
                         } else {
                             cout << "Código inválido, tente novamente.\n";
                             this_thread::sleep_for(chrono::milliseconds(1000));
-                            break;
+                            system("cls");
+                            continue;
                         }
 
                         system("cls");
@@ -225,6 +226,9 @@ int main()
                                         this_thread::sleep_for(chrono::milliseconds(2000));
                                     } else {
                                         cout << "Código inválido, tente novamente.\n";
+                                        this_thread::sleep_for(chrono::milliseconds(1000));
+                                        system("cls");
+                                        continue;
                                     }
                                     break;
                                 case 3:
@@ -250,6 +254,11 @@ int main()
                     bool pagamentoConcluido = false;
 
                     while (!pagamentoConcluido) {
+                        for (const auto& produto : produtosVendidos) {
+                                cout << produto.nome << " - " << produto.peso << " kg - R$ " << produto.preco << endl;
+                            }
+                            cout << fixed << setprecision(2);
+                            cout << "\nTotal a pagar: R$ " << total << endl;
                         cout << "Forma de pagamento:\n";
                         cout << "1. Dinheiro\n";
                         cout << "2. Cartão de crédito\n";
@@ -276,6 +285,8 @@ int main()
                                     system("cls");
                                 } else {
                                     cout << "Valor insuficiente, operação cancelada.\n";
+                                    this_thread::sleep_for(chrono::milliseconds(2000));
+                                    system("cls");
                                 }
                                 break;
                             }
@@ -329,7 +340,7 @@ int main()
             cout << fixed << setprecision(2);
             cout << "\nTotal de vendas no cartão de débito: R$ " << totalDebito << endl;
             this_thread::sleep_for(chrono::milliseconds(500));
-            cout << "Total geral: R$ " << totalCredito + totalDebito + totalDinheiro << endl;
+            cout << "\nTotal geral: R$ " << totalCredito + totalDebito + totalDinheiro << endl;
 
 
 	    // Gravar os dados no arquivo
