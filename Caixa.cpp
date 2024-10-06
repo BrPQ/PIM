@@ -157,6 +157,7 @@ int main()
             while (!finalizarDia) {
                 produtosVendidos.clear();
                 total = 0;
+                system("cls");
                 cout << "*****************************************************\n";
                 cout << "|                                                   |\n";
                 cout << "|                  CAIXA LIVRE                      |\n";
