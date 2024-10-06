@@ -368,5 +368,10 @@ int main()
             break;
     }
 
+    fflush(stdin);
+    cout << "\n\nPrecione 'ENTER' para continuar...\n";
+    getchar();
+    system("cls");
+
     return 0;
 }
