@@ -7,7 +7,6 @@
 
 using namespace std;
 
-#define SENHA 123456
 
 // Estrutura para armazenar informações do produto
 struct Produto {
@@ -45,6 +44,30 @@ void removerProduto(vector<Produto>& produtosVendidos, double& total) {
 
 int main()
 {
+    setlocale(LC_ALL,"");
+    ifstream arquivo("senha_funcionario.txt");
+    vector<string> linhas;
+    string linha;
+
+
+    if (arquivo.is_open()) {
+        while (getline(arquivo, linha)) {
+            linhas.push_back(linha);
+        }
+        // Lê a primeira linha (título)
+        getline(arquivo, linha);
+
+
+        arquivo.close();
+    } else {
+        cout << "Erro ao abrir o arquivo." << endl;
+    }
+    int SENHA;
+    for (int i=0; i < 3; i++){
+        SENHA = stoi(linhas[1]);
+
+    }
+
     setlocale(LC_ALL, "");
     int opc;
 
