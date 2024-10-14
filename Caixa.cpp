@@ -7,7 +7,6 @@
 
 using namespace std;
 
-
 // Estrutura para armazenar informações do produto
 struct Produto {
     string nome;
@@ -37,6 +36,7 @@ void removerProduto(vector<Produto>& produtosVendidos, double& total) {
         total -= produtosVendidos[indiceRemover - 1].preco;
         produtosVendidos.erase(produtosVendidos.begin() + (indiceRemover - 1));
         cout << "Produto removido com sucesso!\n";
+        this_thread::sleep_for(chrono::milliseconds(1000));
     } else {
         cout << "Número inválido, tente novamente.\n";
     }
@@ -44,8 +44,7 @@ void removerProduto(vector<Produto>& produtosVendidos, double& total) {
 
 int main()
 {
-    setlocale(LC_ALL,"");
-    ifstream arquivo("senha_funcionario.txt");
+    ifstream arquivo("senha_caixa.txt");
     vector<string> linhas;
     string linha;
 
@@ -65,6 +64,29 @@ int main()
     int SENHA;
     for (int i=0; i < 3; i++){
         SENHA = stoi(linhas[1]);
+
+    }
+
+    ifstream arquivo2("senha_gerente.txt");
+    vector<string> linhas2;
+    string linha2;
+
+
+    if (arquivo2.is_open()) {
+        while (getline(arquivo2, linha2)) {
+            linhas2.push_back(linha2);
+        }
+        // Lê a primeira linha (título)
+        getline(arquivo2, linha2);
+
+
+        arquivo2.close();
+    } else {
+        cout << "Erro ao abrir o arquivo." << endl;
+    }
+    int SENHAG;
+    for (int i=0; i < 3; i++){
+        SENHAG = stoi(linhas2[1]);
 
     }
 
@@ -232,6 +254,16 @@ int main()
 
                             switch (opcao) {
                                 case 1:
+                                    int senhaDigitada;
+                                    cout << "Digite a senha do gerente para remover um produto: ";
+                                    cin >> senhaDigitada;
+
+                                    if (senhaDigitada != SENHAG) {
+                                        cout << "Senha incorreta! Remoção de produto não autorizada.\n";
+                                        this_thread::sleep_for(chrono::milliseconds(1000));
+                                        system("cls");
+                                        continue;
+                                    }
                                     removerProduto(produtosVendidos, total);
                                     break;
                                 case 2:
