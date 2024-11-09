@@ -188,9 +188,9 @@ int main()
             this_thread::sleep_for(chrono::milliseconds(5000));
             system("cls");
 
-            int codigos[] = {1, 2, 3, 4, 5};
-            string nomes[] = {"Maçã", "Banana", "Laranja", "Batata", "Tomate"};
-            float precos[] = {5.99, 3.49, 4.29, 2.89, 6.50};
+            int codigos[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+            string nomes[] = {"Abacate", "Abacaxi", "Goiaba", "Laranja", "Maçã", "Mamão", "Banana", "Limão", "Manga", "Uva", "Melancia", "Maracujá"};
+            float precos[] = {8.98, 8.99, 2.74, 6.99, 9.98, 4.72, 6.99, 8.98, 2.94, 14.20, 2.99, 12.09};
 
             int codigo;
             double peso, total = 0;
@@ -217,7 +217,7 @@ int main()
                         cout << "\nDigite o código do produto: ";
                         cin >> codigo;
 
-                        if (codigo >= 1 && codigo <= 5) {
+                        if (codigo >= 1 && codigo <= 12) {
                             int indice = codigo - 1;
 
                             cout << "Produto: " << nomes[indice] << endl;
@@ -269,7 +269,7 @@ int main()
                                 case 2:
                                     cout << "\nDigite o código do produto: ";
                                     cin >> codigo;
-                                    if (codigo >= 1 && codigo <= 5) {
+                                    if (codigo >= 1 && codigo <= 12) {
                                         int indice = codigo - 1;
                                         cout << "Produto: " << nomes[indice] << endl;
                                         cout << "Digite o peso (em kg): ";
